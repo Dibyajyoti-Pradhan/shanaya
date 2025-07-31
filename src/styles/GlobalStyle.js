@@ -3,6 +3,8 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Cormorant:wght@300;400;500;600&display=swap');
+  
   html {
     box-sizing: border-box;
     scroll-behavior: smooth;
@@ -21,11 +23,12 @@ const GlobalStyle = createGlobalStyle`
     width: 100%;
     min-height: 100%;
     background: linear-gradient(
-      135deg,
-      ${({ theme }) => theme.colors.lightNavy} 0%,
-      ${({ theme }) => theme.colors.darkNavy} 33.3%,
-      ${({ theme }) => theme.colors.lightNavy} 66.6%,
-      ${({ theme }) => theme.colors.darkNavy} 100%
+      105deg,
+      #0f1419 0%,
+      #1a2332 25%,
+      #2d3a4a 50%,
+      #4a6b8f 75%,
+      #6b8faf 100%
     );
     color: ${({ theme }) => theme.colors.text};
     font-family: ${({ theme }) => theme.fonts.main};
@@ -36,7 +39,12 @@ const GlobalStyle = createGlobalStyle`
     @media (max-width: 768px) {
       font-size: ${({ theme }) => theme.fontSizes.sm};
       margin-left: 0;
-      background: ${({ theme }) => theme.colors.darkNavy};
+      background: linear-gradient(
+        105deg,
+        #0f1419 0%,
+        #1a2332 50%,
+        #2d3a4a 100%
+      );
     }
   }
 
@@ -57,6 +65,8 @@ const GlobalStyle = createGlobalStyle`
     margin: 0 0 10px 0;
     font-weight: 600;
     line-height: 1.1;
+    font-family: ${({ theme }) => theme.fonts.main};
+    letter-spacing: 0.5px;
 
     @media (max-width: 768px) {
       font-size: 70%;
@@ -66,6 +76,8 @@ const GlobalStyle = createGlobalStyle`
   p {
     margin: 0 0 15px 0;
     max-width: 600px;
+    font-family: ${({ theme }) => theme.fonts.main};
+    line-height: 1.6;
 
     @media (max-width: 768px) {
       font-size: ${({ theme }) => theme.fontSizes.sm};

@@ -1,6 +1,26 @@
-# Getting Started with Create React App
+# Shanaya Lakhani - Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A professional portfolio website showcasing Shanaya Lakhani's expertise in ESG & Investment Stewardship Analysis.
+
+## About
+
+Shanaya Lakhani is a Senior ESG & Investment Stewardship Analyst based in Central London, UK, with extensive experience in ESG research, investment stewardship, and sustainable finance. She has worked with leading financial institutions including SquareWell Partners, DWS (Deutsche Bank Group), and Sustainalytics.
+
+## Features
+
+- **Professional Design**: Clean, modern portfolio layout
+- **Responsive**: Optimized for desktop and mobile devices
+- **Dark/Light Theme**: Toggle between themes
+- **Sections**: About, Skills, Experience, Projects, Achievements, Education, and Contact
+- **Interactive**: Smooth scrolling navigation and hover effects
+
+## Technologies Used
+
+- React.js
+- Styled Components
+- React Icons
+- HTML5/CSS3
+- JavaScript (ES6+)
 
 ## Available Scripts
 
@@ -38,6 +58,11 @@ If you aren't satisfied with the build tool and configuration choices, you can `
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+
+## Contact
+
+- **Email**: ishanayalakhani.official@gmail.com
+- **LinkedIn**: [Shanaya Lakhani](https://uk.linkedin.com/in/shanaya-lakhani-87bb6420a)
 
 ## Learn More
 

@@ -34,7 +34,7 @@ const ExperienceItem = styled.div`
   transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
   display: grid;
   grid-template-columns: 20% 80%;
-  gap: 20px;
+  gap: 10px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
   outline: none;
   cursor: pointer;
@@ -81,7 +81,7 @@ const ExperienceItem = styled.div`
     .title-company {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 5px;
       margin-bottom: 10px;
 
       .job-title {
@@ -122,7 +122,7 @@ const ExperienceItem = styled.div`
     }
 
     .responsibilities {
-      color: ${({ theme }) => theme.colors.lightSlate};
+      color: ${({ theme }) => theme.colors.text};
       font-size: 16px;
       line-height: 1.6;
       margin-bottom: 20px;
@@ -228,10 +228,12 @@ const Experience = () => {
                   </div>
                   <div className="job-title">{position}</div>
                 </div>
-                <div className="location">
-                  <FaMapMarkerAlt />
-                  <span>{location}</span>
-                </div>
+                {location && (
+                  <div className="location">
+                    <FaMapMarkerAlt />
+                    <span>{location}</span>
+                  </div>
+                )}
                 <div className="responsibilities">
                   {responsibilities.map((item, idx) => (
                     <p key={idx}>{item}</p>

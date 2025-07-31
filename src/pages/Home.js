@@ -9,28 +9,14 @@ import Projects from "../components/Projects";
 import Achievements from "../components/Achievements";
 import Education from "../components/Education";
 import Contact from "../components/Contact";
-import ThemeToggle from "../components/common/ThemeToggle";
 
 const MainContainer = styled.main`
   padding: 100px 20px;
-  position: relative; /* Added for positioning */
-  .theme-toggle-mobile {
-    display: none; /* Hide by default */
-
-    @media (max-width: 768px) {
-      display: block; /* Show in mobile view */
-      position: absolute;
-      top: 20px;
-      right: 20px;
-    }
-  }
+  position: relative;
 `;
 
 const Home = () => (
   <MainContainer>
-    <div className="theme-toggle-mobile">
-      <ThemeToggle />
-    </div>
     <About />
     <Skills />
     <Experience />

@@ -3,13 +3,7 @@
 import React from "react";
 import styled from "styled-components";
 import { personalInfo, socialLinks } from "../data/data";
-import {
-  FaLinkedin,
-  FaInstagram,
-  FaEnvelope,
-  FaFileDownload,
-  FaCode,
-} from "react-icons/fa";
+import { FaLinkedin, FaEnvelope, FaFileDownload } from "react-icons/fa";
 
 const ContactSection = styled.section`
   max-width: 1100px;
@@ -109,45 +103,55 @@ const ContactSection = styled.section`
 `;
 
 const Contact = () => {
-  const linkedinUrl = socialLinks.find((link) => link.name === "LinkedIn").url;
-  const leetCodeUrl = socialLinks.find((link) => link.name === "LeetCode").url;
-  const instagramUrl = socialLinks.find(
-    (link) => link.name === "Instagram"
-  ).url;
-
   return (
     <ContactSection id="contact">
       <h2>{personalInfo.contact.heading}</h2>
       <p>{personalInfo.contact.message}</p>
       <div className="contact-links">
-        <a href={leetCodeUrl} target="_blank" rel="noopener noreferrer">
-          <FaCode /> LeetCode
-        </a>
-        <a className="email-link" href={`mailto:${personalInfo.contact.email}`}>
-          <FaEnvelope /> Email
-        </a>
-        <a href={instagramUrl} target="_blank" rel="noopener noreferrer">
-          <FaInstagram /> Instagram
-        </a>
-      </div>
-      <div className="contact-links">
+        {socialLinks.map(({ id, name, url }) => {
+          let icon;
+          switch (name) {
+            case "LinkedIn":
+              icon = <FaLinkedin />;
+              break;
+            case "Email":
+              icon = <FaEnvelope />;
+              break;
+            default:
+              icon = <FaEnvelope />;
+          }
+
+          return (
+            <a
+              key={id}
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${name} Link`}
+            >
+              {icon}
+              {name}
+            </a>
+          );
+        })}
         <a
-          className="social-link-row2"
-          href={linkedinUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <FaLinkedin /> LinkedIn
-        </a>
-        <a
-          className="social-link-row2"
           href={`${process.env.PUBLIC_URL}/resume.pdf`}
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Resume Link"
         >
-          <FaFileDownload /> Download Résumé
+          <FaFileDownload />
+          Resume
         </a>
       </div>
+      <a
+        href={`mailto:${personalInfo.contact.email}`}
+        className="email-link"
+        aria-label="Email Link"
+      >
+        <FaEnvelope />
+        {personalInfo.contact.email}
+      </a>
     </ContactSection>
   );
 };

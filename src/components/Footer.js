@@ -3,13 +3,7 @@
 import React from "react";
 import styled from "styled-components";
 import { personalInfo, socialLinks } from "../data/data";
-import {
-  FaGithub,
-  FaLinkedin,
-  FaTwitter,
-  FaInstagram,
-  FaCode,
-} from "react-icons/fa";
+import { FaLinkedin, FaEnvelope } from "react-icons/fa";
 
 const FooterContainer = styled.footer`
   text-align: center;
@@ -23,7 +17,11 @@ const FooterContainer = styled.footer`
 
     a {
       color: ${({ theme }) => theme.colors.text};
-      font-size: 30px;
+      font-size: ${({ panelWidth }) => {
+        if (panelWidth >= 400) return "30px";
+        if (panelWidth >= 300) return "25px";
+        return "24px";
+      }};
       transition: transform 0.3s ease, color 0.3s ease;
 
       &:hover {
@@ -35,7 +33,12 @@ const FooterContainer = styled.footer`
 
   .footer-text {
     color: ${({ theme }) => theme.colors.text};
-    font-size: 14px;
+    font-size: ${({ panelWidth }) => {
+      if (panelWidth >= 400) return "12px";
+      if (panelWidth >= 300) return "11px";
+      return "10px";
+    }};
+    line-height: 1.4;
 
     a {
       color: ${({ theme }) => theme.colors.primary};
@@ -49,31 +52,30 @@ const FooterContainer = styled.footer`
 
   .credits {
     margin-top: 20px;
-    font-size: 12px;
+    font-size: ${({ panelWidth }) => {
+      if (panelWidth >= 400) return "10px";
+      if (panelWidth >= 300) return "9px";
+      return "8px";
+    }};
     color: ${({ theme }) => theme.colors.text};
+    line-height: 1.4;
   }
 `;
 
-const Footer = () => (
-  <FooterContainer>
+const Footer = ({ panelWidth = 280 }) => (
+  <FooterContainer panelWidth={panelWidth}>
     <div className="social-icons">
       {socialLinks.map(({ id, name, url }) => {
         let Icon;
         switch (name) {
-          case "GitHub":
-            Icon = FaGithub;
-            break;
           case "LinkedIn":
             Icon = FaLinkedin;
             break;
-          case "Twitter":
-            Icon = FaTwitter;
-            break;
-          case "Instagram":
-            Icon = FaInstagram;
+          case "Email":
+            Icon = FaEnvelope;
             break;
           default:
-            Icon = FaCode;
+            Icon = FaEnvelope;
         }
         return (
           <a
@@ -92,7 +94,7 @@ const Footer = () => (
       <p>
         Designed & Built by{" "}
         <a
-          href="https://www.linkedin.com/in/dibyajyoti-pradhan-83a649146/"
+          href="https://uk.linkedin.com/in/shanaya-lakhani-87bb6420a"
           target="_blank"
           rel="noopener noreferrer"
         >

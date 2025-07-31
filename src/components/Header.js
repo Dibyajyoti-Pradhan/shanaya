@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { navLinks, personalInfo } from "../data/data";
-import ThemeToggle from "./common/ThemeToggle";
 
 const HeaderContainer = styled.header`
   width: 100%;
@@ -11,7 +10,11 @@ const HeaderContainer = styled.header`
 
   .logo {
     margin-top: 50px;
-    font-size: ${({ theme }) => theme.fontSizes.xl};
+    font-size: ${({ theme, panelWidth }) => {
+      if (panelWidth >= 400) return theme.fontSizes.xl;
+      if (panelWidth >= 300) return theme.fontSizes.lg;
+      return "20px";
+    }};
     color: ${({ theme }) => theme.colors.primary};
     font-weight: bold;
 
@@ -35,7 +38,11 @@ const HeaderContainer = styled.header`
 
         a {
           color: ${({ theme }) => theme.colors.text};
-          font-size: ${({ theme }) => theme.fontSizes.base};
+          font-size: ${({ theme, panelWidth }) => {
+            if (panelWidth >= 400) return theme.fontSizes.base;
+            if (panelWidth >= 300) return theme.fontSizes.sm;
+            return "16px";
+          }};
           text-decoration: none;
           padding: 5px;
           transition: ${({ theme }) => theme.transition};
@@ -61,7 +68,11 @@ const HeaderContainer = styled.header`
       border: 1px solid ${({ theme }) => theme.colors.primary};
       border-radius: ${({ theme }) => theme.borderRadius};
       padding: 0.75rem 1rem;
-      font-size: ${({ theme }) => theme.fontSizes.sm};
+      font-size: ${({ theme, panelWidth }) => {
+        if (panelWidth >= 400) return theme.fontSizes.sm;
+        if (panelWidth >= 300) return "14px";
+        return "13px";
+      }};
       font-family: ${({ theme }) => theme.fonts.mono};
       text-decoration: none;
       cursor: pointer;
@@ -73,18 +84,9 @@ const HeaderContainer = styled.header`
       }
     }
   }
-
-  .theme-toggle {
-    margin-top: 40px;
-
-    @media (max-width: 768px) {
-      margin-top: 0px;
-      display: none; /* Hide toggle in mobile view */
-    }
-  }
 `;
 
-const Header = () => {
+const Header = ({ panelWidth = 280 }) => {
   const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
@@ -113,7 +115,7 @@ const Header = () => {
   }, []);
 
   return (
-    <HeaderContainer>
+    <HeaderContainer panelWidth={panelWidth}>
       <div className="logo">
         <a href="/">{personalInfo.name}</a>
       </div>
@@ -150,9 +152,6 @@ const Header = () => {
         >
           Download Résumé
         </a>
-      </div>
-      <div className="theme-toggle">
-        <ThemeToggle />
       </div>
     </HeaderContainer>
   );

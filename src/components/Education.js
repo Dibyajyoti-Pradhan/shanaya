@@ -104,7 +104,7 @@ const Education = () => {
     setShowMore(!showMore);
   };
 
-  const educationToShow = showMore ? education : education.slice(0, 1);
+  const educationToShow = showMore ? education : education.slice(0, 2);
 
   return (
     <EducationSection id="education">
@@ -112,22 +112,30 @@ const Education = () => {
       <EducationList>
         {educationToShow.map(
           ({ id, school, url, degree, duration, location, major, details }) => (
-            <EducationItem
-              key={id}
-              tabIndex="0"
-              onClick={() => {
-                window.open(url, "_blank", "noopener,noreferrer");
-              }}
-              onKeyPress={(e) => {
-                if (e.key === "Enter") {
-                  window.open(url, "_blank", "noopener,noreferrer");
-                }
-              }}
-            >
+            <EducationItem key={id} tabIndex="0">
               <div className="left-column">{duration}</div>
               <div className="right-column">
                 <div className="title-school">
-                  <div className="school">{school}</div>
+                  <div
+                    className="school"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                    }}
+                  >
+                    <a
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      tabIndex="0"
+                      onKeyPress={(e) => {
+                        if (e.key === "Enter") {
+                          window.open(url, "_blank", "noopener,noreferrer");
+                        }
+                      }}
+                    >
+                      {school}
+                    </a>
+                  </div>
                   <div className="degree">{degree}</div>
                 </div>
                 <div className="location">
@@ -145,7 +153,7 @@ const Education = () => {
           )
         )}
       </EducationList>
-      {education.length > 1 && (
+      {education.length > 2 && (
         <Button onClick={handleShowMore}>
           {showMore ? "Show Less" : "Show More"}
         </Button>

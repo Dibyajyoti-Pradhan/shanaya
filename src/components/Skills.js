@@ -24,7 +24,7 @@ const SkillsSection = styled.section`
 
       h3 {
         font-size: 20px;
-        color: ${({ theme }) => theme.colors.text};
+        color: ${({ theme }) => theme.colors.primary};
         font-weight: bold;
         flex: 0.2;
         display: flex;
@@ -47,8 +47,8 @@ const SkillsSection = styled.section`
         }
 
         span {
-          background-color: ${({ theme }) => theme.colors.secondary};
-          color: ${({ theme }) => theme.colors.text};
+          background-color: ${({ theme }) => theme.colors.accent};
+          color: ${({ theme }) => theme.colors.white};
           padding: 10px 15px;
           border-radius: ${({ theme }) => theme.borderRadius};
           font-size: 14px;
@@ -59,11 +59,14 @@ const SkillsSection = styled.section`
           cursor: pointer;
           outline: none;
           tabindex: 0;
+          border: 1px solid ${({ theme }) => theme.colors.primary};
 
           &:hover,
           &:focus {
             box-shadow: 0px 0px 15px 5px ${({ theme }) => theme.colors.primary};
             transform: scale(1.05);
+            background-color: ${({ theme }) => theme.colors.primary};
+            color: ${({ theme }) => theme.colors.white};
           }
         }
       }

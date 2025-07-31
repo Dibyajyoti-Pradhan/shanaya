@@ -13,6 +13,7 @@ const AboutSection = styled.section`
     display: flex;
     gap: 50px;
     align-items: center;
+    flex-direction: row;
 
     @media (max-width: 768px) {
       flex-direction: column;
