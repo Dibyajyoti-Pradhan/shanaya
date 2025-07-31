@@ -23,12 +23,10 @@ const GlobalStyle = createGlobalStyle`
     width: 100%;
     min-height: 100%;
     background: linear-gradient(
-      105deg,
+      135deg,
       #0f1419 0%,
-      #1a2332 25%,
-      #2d3a4a 50%,
-      #4a6b8f 75%,
-      #6b8faf 100%
+      #6b8faf 50%,
+      #0f1419 100%
     );
     color: ${({ theme }) => theme.colors.text};
     font-family: ${({ theme }) => theme.fonts.main};
@@ -40,10 +38,10 @@ const GlobalStyle = createGlobalStyle`
       font-size: ${({ theme }) => theme.fontSizes.sm};
       margin-left: 0;
       background: linear-gradient(
-        105deg,
+        135deg,
         #0f1419 0%,
-        #1a2332 50%,
-        #2d3a4a 100%
+        #6b8faf 50%,
+        #0f1419 100%
       );
     }
   }
