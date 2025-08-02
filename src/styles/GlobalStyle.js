@@ -22,12 +22,12 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     width: 100%;
     min-height: 100%;
-    background: linear-gradient(
+    background: var(--dynamic-gradient, linear-gradient(
       135deg,
       #0f1419 0%,
       #6b8faf 50%,
       #0f1419 100%
-    );
+    ));
     color: ${({ theme }) => theme.colors.text};
     font-family: ${({ theme }) => theme.fonts.main};
     font-size: ${({ theme }) => theme.fontSizes.base};
@@ -37,12 +37,12 @@ const GlobalStyle = createGlobalStyle`
     @media (max-width: 768px) {
       font-size: ${({ theme }) => theme.fontSizes.sm};
       margin-left: 0;
-      background: linear-gradient(
+      background: var(--dynamic-gradient, linear-gradient(
         135deg,
         #0f1419 0%,
         #6b8faf 50%,
         #0f1419 100%
-      );
+      ));
     }
   }
 

@@ -1,13 +1,13 @@
 // src/App.js
 
 import React, { useEffect, useState, useRef } from "react";
+import styled from "styled-components";
 import { BrowserRouter as Router } from "react-router-dom";
 import { ThemeProvider as StyledThemeProvider } from "styled-components";
 import GlobalStyle from "./styles/GlobalStyle";
 import Header from "./components/Header";
 import Home from "./pages/Home";
 import Footer from "./components/Footer";
-import styled from "styled-components";
 import { ThemeProvider } from "./context/ThemeContext";
 
 const AppContainer = styled.div`
@@ -88,10 +88,13 @@ const RightColumn = styled.div`
   }
 `;
 
+// (GradientBackground removed, now using CSS variable on body)
+
 function App() {
   const [isMobile, setIsMobile] = useState(false);
   const [leftPanelWidth, setLeftPanelWidth] = useState(280);
   const [isResizing, setIsResizing] = useState(false);
+  const [gradientAngle, setGradientAngle] = useState(135);
   const leftPanelRef = useRef(null);
 
   useEffect(() => {
@@ -103,6 +106,33 @@ function App() {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  // Gradient tilt effect for desktop (mousemove), fixed angle for mobile
+  useEffect(() => {
+    if (isMobile) {
+      // Set a smoother gradient for mobile (adjust color stops)
+      const gradient = `linear-gradient(
+        180deg,
+        #0f1419 0%,
+        #6b8faf 70%,
+        #0f1419 100%
+      )`;
+      document.body.style.setProperty("--dynamic-gradient", gradient);
+      setGradientAngle(180);
+      return;
+    }
+    const handleMouseMove = (e) => {
+      if (isResizing) return;
+      // Calculate angle based on mouse position
+      const x = e.clientX / window.innerWidth;
+      const y = e.clientY / window.innerHeight;
+      // Angle from 90deg (top) to 180deg (right) to 270deg (bottom) to 360deg (left)
+      const angle = 90 + (x - 0.5) * 180 + (y - 0.5) * 90;
+      setGradientAngle(angle);
+    };
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, [isMobile, isResizing]);
 
   useEffect(() => {
     const handleMouseMove = (e) => {
